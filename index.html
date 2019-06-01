@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daily planner</title>
+    <link rel="stylesheet" href="./css/style.css">    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img  src="./img/DPlogo.png" alt="">
+        </div>
+        <div class="date-time-block">
+            <div class="time" id="timeID" ></div>
+            <div class="date" id="dateID" >15.02.2019</div>
+        </div>
+        <div class="weather"></div>
+        <div class="city-block">
+            <div class="cityText">Выберете свой город</div>
+            <div class="cityChoose">
+                <select name="city" id="cityChoice">
+                    <option value="Москва">Москва</option>
+                    <option value="Нижний Новгород">Нижний Новгород</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <section>
+        <aside>
+            <div class="dateTable">
+                <div class="dateTable--item">1</div>
+                <div class="dateTable--item">2</div>
+                <div class="dateTable--item">3</div>
+                <div class="dateTable--item">4</div>
+                <div class="dateTable--item">5</div>
+                <div class="dateTable--item">6</div>
+                <div class="dateTable--item">7</div>
+                <div class="dateTable--item">8</div>
+                <div class="dateTable--item">9</div>
+                <div class="dateTable--item">10</div>
+                <div class="dateTable--item">11</div>
+                <div class="dateTable--item">12</div>
+                <div class="dateTable--item">13</div>
+                <div class="dateTable--item">14</div>
+                <div class="dateTable--item">15</div>
+                <div class="dateTable--item">16</div>
+                <div class="dateTable--item">17</div>
+                <div class="dateTable--item">18</div>
+                <div class="dateTable--item">19</div>
+                <div class="dateTable--item">21</div>
+                <div class="dateTable--item">22</div>
+                <div class="dateTable--item">23</div>
+                <div class="dateTable--item">24</div>
+                <div class="dateTable--item">25</div>
+                <div class="dateTable--item">26</div>
+                <div class="dateTable--item">27</div>
+                <div class="dateTable--item">28</div>
+                <div class="dateTable--item">29</div>
+                <div class="dateTable--item">30</div>
+                <div class="dateTable--item">31</div>
+            </div>
+            <div class="input-block">
+                <input type="date">                
+            </div>
+            <div class="main-buttons">
+                <a href="" id="setNewBtnID" onclick="event.preventDefault()" > 
+                    <div  class="btn green">
+                        <p>Добавить задачу</p>
+                    </div>
+                </a>
+                <a href="" id="delAllBtn" onclick="event.preventDefault()">
+                    <div class="btn red">
+                        <p>Удалить все</p>
+                    </div>
+                </a>
+            </div>
+            <div class="today-aims">
+                <p id="today-aims--headline">Планы на сегодня</p>
+                <div class="important-plans dflex">
+                    <div class="indicator red"></div>
+                    <p class="plnans-text">Важные: <span>1</span></p>
+                </div>
+                <div class="unimportant-plans dflex">
+                    <div class="indicator blue"></div>
+                    <p class="plnans-text">Второстепенные: <span>1</span></p>
+                </div>
+                <div class="plans-done dflex">
+                    <div class="indicator green"></div>
+                    <p class="plnans-text">Выполненно: <span>28%</span></p>
+                </div>
+            </div>
+        </aside>
+        <div class="content-block">
+            <div class="content-block__plansList" id="plansListID">
+                <!-- <div class="plansList__plan important-plan " data-plansid="ID1">
+                            <p class="plans-name">Название</p>
+                            <p class="plans-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam aliquid earum ullam,
+                                aliquam iure mollitia, vel, vitae enim expedita sunt recusandae sequi voluptates aspernatur eveniet natus
+                                dignissimos temporibus. Ea, recusandae.</p>
+                            <div class="plans__comandButtons">                
+                                <div class=" btn delete-pln-btn" id="deletePlanBtn">Удалить</div>     
+                                <div class="btn add-pln-btn" id="readyPlanBtn">Готово!</div>                
+                            </div> -->
+            </div>
+            <div class="addNewPopUp">
+                <div class="closeBtn">
+                    <a href="" id="closeBtnID" onclick="event.preventDefault()">
+                        <div class="closeBtn">X</div>
+                    </a>
+                </div>
+                <div class="addNewPopUp__plansName">
+                    <p class="" id="pNameID">Наименование</p>
+                    <p id="notice"></p>
+                    <input type="text" id="plansNameInputID">
+                </div>
+        
+                <div class="addNewPopUp__descriptionName">
+                    <p>Введите описание вашего плана</p>
+                    <textarea name="" id="plansDescriptInputID" cols="30" rows="10"></textarea>
+                </div>
+                <div class="addNewPopUp__setStatus">
+                    <label for="statusID">
+                        <input type="checkbox" id="PlansStatusID">Это важно!</label>
+                </div>
+                <a href="" id="addNewBtnID" onclick="event.preventDefault()">
+                    <div class="btn addNewPopUp__addBtn">Добавить</div>
+                </a>
+            </div>
+        </div>
+        </div>        
+    </section>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Установка даты и времени -->
+    <script src="./js/main.js" ></script>
+    <!-- Установка погоды -->
+    <script src="./modules/weather.js"></script>
+    <!-- Pop-up control -->
+    <script src="./modules/pop-up.js"></script>
+    <!-- Хранилище планов - api модуль - -->
+    <script src="./modules/boxOfPlans.js"></script>
+    <!-- render of plans -->
+    <script src="./modules/render.js"></script>
+    <!-- Управление количеством планов -->
+    <script src="./modules/ControlPlans.js"></script>
+</body>
+</html>
