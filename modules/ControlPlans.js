@@ -6,6 +6,7 @@ var plansList = document.getElementById('plansListID');
 deleteAllButton.addEventListener('click', ()=>{
     storage.deleteAllPlans();
     storage.renderPlans();
+    storage.renderStats();
 })
 
 //удаление одного плана
@@ -18,7 +19,8 @@ plansList.addEventListener('click',()=>{
     target.id == 'deletePlanBtn'){        
         let id = plan.getAttribute('data-plansid');
         storage.deleteOnePlan(id);
-        storage.renderPlans();        
+        storage.renderPlans(); 
+        storage.renderStats();
     }
 })
 
@@ -31,7 +33,8 @@ plansList.addEventListener('click',()=>{
     target.id == 'readyPlanBtn'){        
         let id = plan.getAttribute('data-plansid');
         storage.finishOnePlan(id);
-        storage.renderPlans();        
+        storage.renderPlans();
+        storage.renderStats();        
     }
 })
 

@@ -80,29 +80,20 @@
                 <p id="today-aims--headline">Планы на сегодня</p>
                 <div class="important-plans dflex">
                     <div class="indicator red"></div>
-                    <p class="plnans-text">Важные: <span>1</span></p>
+                    <p class="plnans-text">Важные: <span id="importantCount">0</span></p>
                 </div>
                 <div class="unimportant-plans dflex">
                     <div class="indicator blue"></div>
-                    <p class="plnans-text">Второстепенные: <span>1</span></p>
+                    <p class="plnans-text">Второстепенные: <span id="unimportantCount">0</span></p>
                 </div>
                 <div class="plans-done dflex">
                     <div class="indicator green"></div>
-                    <p class="plnans-text">Выполненно: <span>28%</span></p>
+                    <p class="plnans-text">Выполненно: <span id="donePercent">0 %</span></p>
                 </div>
             </div>
         </aside>
         <div class="content-block">
-            <div class="content-block__plansList" id="plansListID">
-                <!-- <div class="plansList__plan important-plan " data-plansid="ID1">
-                            <p class="plans-name">Название</p>
-                            <p class="plans-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam aliquid earum ullam,
-                                aliquam iure mollitia, vel, vitae enim expedita sunt recusandae sequi voluptates aspernatur eveniet natus
-                                dignissimos temporibus. Ea, recusandae.</p>
-                            <div class="plans__comandButtons">                
-                                <div class=" btn delete-pln-btn" id="deletePlanBtn">Удалить</div>     
-                                <div class="btn add-pln-btn" id="readyPlanBtn">Готово!</div>                
-                            </div> -->
+            <div class="content-block__plansList" id="plansListID">                
             </div>
             <div class="addNewPopUp">
                 <div class="closeBtn">
@@ -144,5 +135,8 @@
     <script src="./modules/render.js"></script>
     <!-- Управление количеством планов -->
     <script src="./modules/ControlPlans.js"></script>
+    <!-- Блок статистики по планам -->
+    <script src="./modules/stats.js"></script>
+
 </body>
 </html>
