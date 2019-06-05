@@ -16,13 +16,22 @@
             <div class="time" id="timeID" ></div>
             <div class="date" id="dateID" >15.02.2019</div>
         </div>
-        <div class="weather"></div>
+        <div class="weather">
+            <div class="temperature">
+                <div class="weather-logo temp-" id="tempDiv"></div>
+                <p id="temperature-value">+20</p>
+            </div>
+            <div class="sky-state">
+                <div class="weather-logo storm" id="skyDiv"></div>
+                <p id="sky-value">Гроза</p>
+            </div>
+        </div>
         <div class="city-block">
             <div class="cityText">Выберете свой город</div>
             <div class="cityChoose">
                 <select name="city" id="cityChoice">
                     <option value="Москва">Москва</option>
-                    <option value="Нижний Новгород">Нижний Новгород</option>
+                    <option selected value="Нижний Новгород">Нижний Новгород</option>
                 </select>
             </div>
         </div>
