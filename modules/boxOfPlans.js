@@ -1,10 +1,19 @@
 (function(){
-    storage.plansStore = {};
-    let plansCounter = 0;
+    
+    
+    var plansStore = {};
+    if (localStorage.plansStore === undefined) {
+        localStorage.setItem("plansStore", JSON.stringify(plansStore));
+    }
+
+    var plansCounter = 0
     let plansIndex = 0;//для идентификации планов
     const id = "ID";//для идентификации планов
-    let impPlansCount = 0;
-    let finishedPlans = 0;
+    var impPlansCount = 0;
+    var finishedPlans = 0;
+
+
+
 
     storage.addNewPlan = function(name,description,status){
         plansCounter++;
@@ -17,24 +26,40 @@
             impPlansCount++;
         }
 
-        storage.plansStore[index] = {
+        let currentStore = localStorage.plansStore;
+        try {
+            currentStore = JSON.parse(currentStore);
+        } catch {
+            currentStore = {};
+        }
+                
+
+        currentStore[index] =
+            {
             plansName: name ,
             plansDescription: description ,
             plansStatus: status ,
             plansId: index ,
-        };
-        
+            };
+            localStorage.plansStore = JSON.stringify(currentStore);    
         storage.renderStats();
     };
 
     storage.deleteOnePlan = function(id){
         plansCounter--;
-        let plan = storage.plansStore[id];
+        let currentStore = localStorage.plansStore;
+        currentStore = JSON.parse(currentStore);
+        console.log("curent = ", currentStore);
+
+        let plan = currentStore[id];
         let planStaus = plan.plansStatus;
         if(planStaus == 1){
             impPlansCount--;
         }
-        delete storage.plansStore[id];
+        
+        delete currentStore[id];
+        localStorage.plansStore = JSON.stringify(currentStore);
+
         let allPlans = storage.getCountPlans();
         if(allPlans == 0){
             plansIndex = 0;
@@ -52,24 +77,45 @@
     storage.deleteAllPlans = function(){
         plansCounter = 0;
         plansIndex = 0;
-        for(item in storage.plansStore){
-            delete storage.plansStore[item];
-            storage.renderStats();
-        };
-    };
-
-    storage.getPlans = function(){
-        return storage.plansStore;
+        localStorage.plansStore = {};
+        storage.renderStats();
+        
     };
 
     storage.getCountPlans = function(){
-        return plansCounter;
-    }
+        let count = 0;
+        let currentStore = localStorage.plansStore;
+        try{
+            currentStore = JSON.parse(currentStore);
+        } catch{
+            currentStore = {};
+        }
+        
+        for(item in currentStore){
+            count++
+        }
+        return count;
+    };
 
     storage.getCountImpPlans = function(){
-        return impPlansCount;
+        let count = 0;
+        let currentStore = localStorage.plansStore;
+        try{
+            currentStore = JSON.parse(currentStore);
+        } catch{
+            currentStore = {};
+        }
+        
+        for(item in currentStore){
+            let obj = currentStore[item];
+            if(obj.plansStatus == 1){
+                count++;
+            }
+        }
+        return count;
     }
 
+    //functions for statistic
     storage.getCountFinishedPlans = function(){
         return finishedPlans;
     }

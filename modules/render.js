@@ -4,7 +4,14 @@
 
     storage.renderPlans = function()
     {
-        let renderList = storage.getPlans();
+        let renderList = localStorage.plansStore;
+        try{
+            renderList = JSON.parse(renderList);
+        }catch{
+            console.log("somthing was wrong");
+            renderList = {};
+        }
+        
         $('#plansListID').empty();
 
         for(let item in renderList){
@@ -36,5 +43,6 @@
         }
         // $('.content-block__planList').append(htmlString);
     }
+    storage.renderStats();
 };
 })();

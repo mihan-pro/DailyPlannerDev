@@ -18,12 +18,12 @@
         </div>
         <div class="weather">
             <div class="temperature">
-                <div class="weather-logo temp-" id="tempDiv"></div>
-                <p id="temperature-value">+20</p>
+                <div class="weather-logo " id="tempDiv"></div>
+                <p id="temperature-value"></p>
             </div>
             <div class="sky-state">
-                <div class="weather-logo storm" id="skyDiv"></div>
-                <p id="sky-value">Гроза</p>
+                <div class="weather-logo " id="skyDiv"></div>
+                <p id="sky-value"></p>
             </div>
         </div>
         <div class="city-block">
@@ -32,6 +32,8 @@
                 <select name="city" id="cityChoice">
                     <option value="Москва">Москва</option>
                     <option selected value="Нижний Новгород">Нижний Новгород</option>
+                    <option value="Верхоянск">Верхоянск</option>
+                    <option value="London">London</option>
                 </select>
             </div>
         </div>
@@ -132,8 +134,10 @@
         </div>        
     </section>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- main script -->
+    <script src="./js/main.js"></script>
     <!-- Установка даты и времени -->
-    <script src="./js/main.js" ></script>
+    <script src="./modules/time.js" ></script>
     <!-- Установка погоды -->
     <script src="./modules/weather.js"></script>
     <!-- Pop-up control -->

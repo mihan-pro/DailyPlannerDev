@@ -362,11 +362,20 @@ aside{
 .tempPlus{
     background-image: url(../img/temperature.png);
 }
+.warm{
+    background-image: url(../img/warm.png);
+}
+.cold{
+    background-image: url(../img/cold-.png);
+}
 .storm{
     background-image: url(../img/storm.png);
 }
 .sun{
     background-image: url(../img/sun.png);
+}
+.moon{
+    background-image: url(../img/moon.png);
 }
 .cloud{
     background-image: url(../img/cloud.png);

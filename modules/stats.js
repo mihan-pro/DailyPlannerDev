@@ -3,10 +3,15 @@ let importantCount = $('#importantCount');
 let unimportantCount = $('#unimportantCount');
 let donePercent = $('#donePercent');
 
+let updateAllPlansCount = function(){
+    storage.allPlans = storage.getCountImpPlans();
+}
+//получение важных планов
 let updateImportantCount = function(){
     let value = storage.getCountImpPlans();
     $(importantCount).html(value);
 }
+//получение неважных планов
 let updateUniportantCount = function(){
     let valueAll = storage.getCountPlans();
     let valueImp = storage.getCountImpPlans();
@@ -14,21 +19,22 @@ let updateUniportantCount = function(){
     $(unimportantCount).html(value);
 }
 let updatePercent = function(){
-    let allPlans = storage.getAllPlansCount();    
+    storage.allPlans = storage.getAllPlansCount();    
     let finishedPlans = storage.getCountFinishedPlans();
-    if(allPlans == 0 && finishedPlans < 1){
+    if(storage.allPlans == 0 && finishedPlans < 1){
         $(donePercent).html( 0 + " %");
         return;
     }
-    if(allPlans == 0 && finishedPlans > 0){
+    if(storage.allPlans == 0 && finishedPlans > 0){
         $(donePercent).html( 100 + " %");
         return;
     }
-    let percent = finishedPlans/allPlans*100;
+    let percent = finishedPlans/storage.allPlans*100;
     percent = Math.round(percent);
     $(donePercent).html(percent + " %");
 }
 storage.renderStats = function(){
+    updateAllPlansCount();
     updateImportantCount();
     updateUniportantCount();
     updatePercent();
