@@ -7,6 +7,7 @@ storage.setNewPlanBtn = document.getElementById('setNewBtnID');
 
 //появление и скрытие формы
 storage.showPopUp = function(){
+    $('.POPUP').css('display','contents');
     $(storage.popUp).show(200);
 }
 storage.hidePopUp = function(){

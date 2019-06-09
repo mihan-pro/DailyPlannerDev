@@ -106,29 +106,31 @@
         <div class="content-block">
             <div class="content-block__plansList" id="plansListID">                
             </div>
-            <div class="addNewPopUp">
-                <div class="closeBtn">
-                    <a href="" id="closeBtnID" onclick="event.preventDefault()">
-                        <div class="closeBtn">X</div>
+            <div class="POPUP">
+                <div class="addNewPopUp">
+                    <div class="closeBtn">
+                        <a href="" id="closeBtnID" onclick="event.preventDefault()">
+                            <div class="closeBtn">X</div>
+                        </a>
+                    </div>
+                    <div class="addNewPopUp__plansName">
+                        <p class="" id="pNameID">Наименование</p>
+                        <p id="notice"></p>
+                        <input type="text" id="plansNameInputID">
+                    </div>
+            
+                    <div class="addNewPopUp__descriptionName">
+                        <p>Введите описание вашего плана</p>
+                        <textarea name="" id="plansDescriptInputID" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="addNewPopUp__setStatus">
+                        <label for="statusID">
+                            <input type="checkbox" id="PlansStatusID">Это важно!</label>
+                    </div>
+                    <a href="" id="addNewBtnID" onclick="event.preventDefault()">
+                        <div class="btn addNewPopUp__addBtn">Добавить</div>
                     </a>
                 </div>
-                <div class="addNewPopUp__plansName">
-                    <p class="" id="pNameID">Наименование</p>
-                    <p id="notice"></p>
-                    <input type="text" id="plansNameInputID">
-                </div>
-        
-                <div class="addNewPopUp__descriptionName">
-                    <p>Введите описание вашего плана</p>
-                    <textarea name="" id="plansDescriptInputID" cols="30" rows="10"></textarea>
-                </div>
-                <div class="addNewPopUp__setStatus">
-                    <label for="statusID">
-                        <input type="checkbox" id="PlansStatusID">Это важно!</label>
-                </div>
-                <a href="" id="addNewBtnID" onclick="event.preventDefault()">
-                    <div class="btn addNewPopUp__addBtn">Добавить</div>
-                </a>
             </div>
         </div>
         </div>        

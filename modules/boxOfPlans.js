@@ -1,13 +1,14 @@
-(function(){
-    
-    
+(function(){    
     var plansStore = {};
     if (localStorage.plansStore === undefined) {
         localStorage.setItem("plansStore", JSON.stringify(plansStore));
     }
+    if(localStorage.plansIndex === undefined){
+        localStorage.setItem('plansIndex', 0 + '');
+    }
 
     var plansCounter = 0
-    let plansIndex = 0;//для идентификации планов
+    //для идентификации планов
     const id = "ID";//для идентификации планов
     var impPlansCount = 0;
     var finishedPlans = 0;
@@ -17,11 +18,13 @@
 
     storage.addNewPlan = function(name,description,status){
         plansCounter++;
+        let plansIndex = localStorage.plansIndex;
         let index = id + plansIndex;
-        if(plansIndex == 0){
+        if(+plansIndex == 0){
             finishedPlans = 0;
         }
-        plansIndex++;
+        +plansIndex++
+        localStorage.plansIndex = plansIndex + "";
         if(status == 1){
             impPlansCount++;
         }
@@ -62,7 +65,7 @@
 
         let allPlans = storage.getCountPlans();
         if(allPlans == 0){
-            plansIndex = 0;
+            localStorage.plansIndex = 0 + "";
             // finishedPlans = 0;
         }
         storage.renderStats();
@@ -76,7 +79,7 @@
 
     storage.deleteAllPlans = function(){
         plansCounter = 0;
-        plansIndex = 0;
+        localStorage.plansIndex = 0 + "";
         localStorage.plansStore = {};
         storage.renderStats();
         
@@ -121,7 +124,7 @@
     }
     
     storage.getAllPlansCount = function(){
-        return plansIndex;
+        return localStorage.plansIndex;
     }
 
 })();

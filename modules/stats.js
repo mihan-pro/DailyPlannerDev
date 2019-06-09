@@ -19,7 +19,7 @@ let updateUniportantCount = function(){
     $(unimportantCount).html(value);
 }
 let updatePercent = function(){
-    storage.allPlans = storage.getAllPlansCount();    
+    storage.allPlans = storage.getCountPlans() + storage.getCountFinishedPlans();    
     let finishedPlans = storage.getCountFinishedPlans();
     if(storage.allPlans == 0 && finishedPlans < 1){
         $(donePercent).html( 0 + " %");

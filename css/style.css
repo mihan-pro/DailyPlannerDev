@@ -161,7 +161,9 @@ aside{
 }
 
 /* pop up block */
-
+.POPUP{
+    display: none;
+}
 .addNewPopUp{
     position: absolute;
     z-index: 1;
