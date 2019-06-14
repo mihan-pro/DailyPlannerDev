@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily planner</title>
-    <link rel="stylesheet" href="./css/style.css">    
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <img  src="./img/DPlogo.png" alt="">
+            <img src="./img/DPlogo.png" alt="">
         </div>
         <div class="date-time-block">
-            <div class="time" id="timeID" ></div>
-            <div class="date" id="dateID" >15.02.2019</div>
+            <div class="time" id="timeID"></div>
+            <div class="date" id="dateID">15.02.2019</div>
         </div>
         <div class="weather">
             <div class="temperature">
@@ -73,11 +75,11 @@
                 <div class="dateTable--item">31</div>
             </div>
             <div class="input-block">
-                <input type="date">                
+                <input type="date">
             </div>
             <div class="main-buttons">
-                <a href="" id="setNewBtnID" onclick="event.preventDefault()" > 
-                    <div  class="btn green">
+                <a href="" id="setNewBtnID" onclick="event.preventDefault()">
+                    <div class="btn green">
                         <p>Добавить задачу</p>
                     </div>
                 </a>
@@ -104,7 +106,18 @@
             </div>
         </aside>
         <div class="content-block">
-            <div class="content-block__plansList" id="plansListID">                
+            <div class="content-block__plansList" id="plansListID">
+                <!-- <div class="plansList__plan important-plan " data-plansid="ID1">
+                    <p class="plans-name">Название</p>
+                    <p class="plans-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam aliquid earum ullam,
+                        aliquam iure mollitia, vel, vitae enim expedita sunt recusandae sequi voluptates aspernatur eveniet natus
+                        dignissimos temporibus. Ea, recusandae.</p>
+                    <div class="plans__comandButtons">
+                        <div class="plansTimeLimit">Выполнить до:   <span id="plansTimeLimitVal">15.01.2020 </span> </div>
+                        <div></div>
+                        <div class=" btn delete-pln-btn" id="deletePlanBtn">Удалить</div>
+                        <div class="btn add-pln-btn" id="readyPlanBtn">Готово!</div>
+                    </div> -->
             </div>
             <div class="POPUP">
                 <div class="addNewPopUp">
@@ -118,28 +131,36 @@
                         <p id="notice"></p>
                         <input type="text" id="plansNameInputID">
                     </div>
-            
+
                     <div class="addNewPopUp__descriptionName">
                         <p>Введите описание вашего плана</p>
                         <textarea name="" id="plansDescriptInputID" cols="30" rows="10"></textarea>
                     </div>
                     <div class="addNewPopUp__setStatus">
+                        <div class="setStatus__time">
+                            <p>Выполнить до </p>                            
+                            <input type="number" id="timeLimitDate" min="0" max="31" placeholder="день" >
+                            <input type="number" id="timeLimitMonth"min = '1' max="12" placeholder="месяц" >
+                            <input type="number" id="timeLimitYear" min = 2019 max="2999" maxlength="4" placeholder="год" >
+                        </div>
                         <label for="statusID">
-                            <input type="checkbox" id="PlansStatusID">Это важно!</label>
+                            <input type="checkbox" id="PlansStatusID">Это важно!
+                        </label>
                     </div>
+                    <p id = "setStatus__timeAlert">Никто и никогда не вернётся в 2007 &#169;</p>
                     <a href="" id="addNewBtnID" onclick="event.preventDefault()">
                         <div class="btn addNewPopUp__addBtn">Добавить</div>
                     </a>
                 </div>
             </div>
         </div>
-        </div>        
+        </div>
     </section>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <!-- main script -->
     <script src="./js/main.js"></script>
     <!-- Установка даты и времени -->
-    <script src="./modules/time.js" ></script>
+    <script src="./modules/time.js"></script>
     <!-- Установка погоды -->
     <script src="./modules/weather.js"></script>
     <!-- Pop-up control -->
@@ -154,4 +175,5 @@
     <script src="./modules/stats.js"></script>
 
 </body>
+
 </html>

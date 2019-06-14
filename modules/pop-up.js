@@ -10,6 +10,7 @@ storage.showPopUp = function(){
     $('.POPUP').css('display','contents');
     $(storage.popUp).show(200);
 }
+
 storage.hidePopUp = function(){
     $(storage.popUp).hide(150);
 }
@@ -36,12 +37,34 @@ storage.takeStatusFromPopUp = function(){
     // 
     return val;
 }
+storage.takeTimeLimit = function(){
+    let userValDate = $('#timeLimitDate').val();
+    let userValMonth = $('#timeLimitMonth').val();
+    let userValYear = $('#timeLimitYear').val();
+    if( userValDate  == "" ||
+        userValMonth == "" || 
+        userValYear  == "" ){
+        userVal = "3000-01-15";
+        var userDate = new Date(userVal);
+        return userDate;
+    }
+    try{
+        var userDate = new Date(userValYear,userValMonth,userValDate);
+        console.log("evrything were good = ",userDate);
+    } catch{
+        console.log("somthing was wrong into ", userDate);
+    }
+    return userDate;
+}
 
 //Очистка формы
 storage.clearValuesInPopUp = function(){
     $('#plansNameInputID').val("");
     $('#plansDescriptInputID').val("");
     $('#PlansStatusID').prop('checked',false);
+    $('#timeLimitDate').val("");
+    $('#timeLimitMonth').val("");
+    $('#timeLimitYear').val("");
     storage.nameOfPlan = "";
     storage.descriptionOfPlan = "";
     storage.status = "";
@@ -69,6 +92,35 @@ storage.checkDiscriptPopUp = function(){
     return true;
 }
 
+storage.checkTimeLimit = function(){
+    let currentDate = new Date;
+ {   // let userValDate = $('#timeLimitDate').val();
+    // let userValMonth = $('#timeLimitMonth').val();
+    // let userValYear = $('#timeLimitYear').val();
+    // if( userValDate  == "" ||
+    //     userValMonth == "" || 
+    //     userValYear  == "" ){
+    //     userVal = "3000-01-15";
+    //     var userDate = new Date(userVal);
+    //     return true;
+    // }
+    // try{
+    //     var userDate = new Date(userValYear,userValMonth,userValDate);
+    //     console.log("evrything were good = ",userDate);
+    // } catch{
+    //     console.log("somthing was wrong into ", userDate);
+    // }
+}
+    let userDate = storage.takeTimeLimit();    
+    if( currentDate > userDate){
+        return false;
+    }
+    else
+    {
+        return true;
+    }    
+}
+
 var requierFill = function(){
     if(!storage.checkNamePopUp()){
         $('#plansNameInputID').focus();
@@ -83,10 +135,17 @@ var requierFill = function(){
     }
 }
 
-
-// применение
-$(storage.popUp).hide();
-
+var requierTimeLimit = function(){
+    if(!storage.checkTimeLimit()){
+        $('#timeLimitDate').focus();
+        $('#setStatus__timeAlert').show();
+        return true;
+    }
+    else{
+        $('#setStatus__timeAlert').hide();
+        return false;
+    }
+}
 
 
 storage.setNewPlanBtn.addEventListener('click',()=>{
@@ -98,13 +157,20 @@ $('#plansNameInputID').blur(()=>{
     requierFill();
 });
 
+$('#timeLimitYear').blur(()=>{
+    storage.checkTimeLimit();
+    requierTimeLimit();
+});
+
 storage.closeBtn.addEventListener('click',storage.hidePopUp);
 
 storage.addNewBtn.addEventListener('click', ()=>{
     if(requierFill())return false;
+    if(requierTimeLimit()){return false};
     storage.addNewPlan( storage.takeNameFromPopUp() ,
                         storage.takeDescriptonFromPopUp() ,
-                        storage.takeStatusFromPopUp() 
+                        storage.takeStatusFromPopUp(),
+                        storage.takeTimeLimit(),
                     );
     storage.clearValuesInPopUp();
     storage.hidePopUp();

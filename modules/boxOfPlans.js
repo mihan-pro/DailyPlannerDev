@@ -16,7 +16,7 @@
 
 
 
-    storage.addNewPlan = function(name,description,status){
+    storage.addNewPlan = function(name,description,status,timeLim){
         plansCounter++;
         let plansIndex = localStorage.plansIndex;
         let index = id + plansIndex;
@@ -43,6 +43,7 @@
             plansDescription: description ,
             plansStatus: status ,
             plansId: index ,
+            timeLimit: timeLim,
             };
             localStorage.plansStore = JSON.stringify(currentStore);    
         storage.renderStats();
