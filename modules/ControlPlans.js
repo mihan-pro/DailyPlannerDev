@@ -36,6 +36,20 @@ plansList.addEventListener('click',()=>{
         storage.renderPlans();
         storage.renderStats();        
     }
+});
+
+//вернуть план  в список на выполнения
+plansList.addEventListener('click',()=>{
+    let target = event.target;
+    let plan = target.parentElement;    
+    plan = plan.parentElement;
+    if(plan.classList.contains('plansList__plan')&&
+    target.id == 'returnPlanBtn'){        
+        let id = plan.getAttribute('data-plansid');
+        storage.returnPlan(id);
+        storage.renderPlans();
+        storage.renderStats();        
+    }
 })
 
 

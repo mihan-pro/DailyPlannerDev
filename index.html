@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily planner</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script  src="https://api-maps.yandex.ru/2.1/?apikey=6f75dbc7-4012-40f1-a38b-c08cd0ab53db&lang=ru_RU" type="text/javascript"></script>
 </head>
 
 <body>
@@ -42,40 +43,8 @@
     </header>
     <section>
         <aside>
-            <div class="dateTable">
-                <div class="dateTable--item">1</div>
-                <div class="dateTable--item">2</div>
-                <div class="dateTable--item">3</div>
-                <div class="dateTable--item">4</div>
-                <div class="dateTable--item">5</div>
-                <div class="dateTable--item">6</div>
-                <div class="dateTable--item">7</div>
-                <div class="dateTable--item">8</div>
-                <div class="dateTable--item">9</div>
-                <div class="dateTable--item">10</div>
-                <div class="dateTable--item">11</div>
-                <div class="dateTable--item">12</div>
-                <div class="dateTable--item">13</div>
-                <div class="dateTable--item">14</div>
-                <div class="dateTable--item">15</div>
-                <div class="dateTable--item">16</div>
-                <div class="dateTable--item">17</div>
-                <div class="dateTable--item">18</div>
-                <div class="dateTable--item">19</div>
-                <div class="dateTable--item">21</div>
-                <div class="dateTable--item">22</div>
-                <div class="dateTable--item">23</div>
-                <div class="dateTable--item">24</div>
-                <div class="dateTable--item">25</div>
-                <div class="dateTable--item">26</div>
-                <div class="dateTable--item">27</div>
-                <div class="dateTable--item">28</div>
-                <div class="dateTable--item">29</div>
-                <div class="dateTable--item">30</div>
-                <div class="dateTable--item">31</div>
-            </div>
-            <div class="input-block">
-                <input type="date">
+            <div id="mapsBlock">                
+                
             </div>
             <div class="main-buttons">
                 <a href="" id="setNewBtnID" onclick="event.preventDefault()">
@@ -106,6 +75,10 @@
             </div>
         </aside>
         <div class="content-block">
+            <div class="conntentBlock__plansTypeBTNS">
+                <div class="green plansTypeBTN" id="renderPlansBtn">Активные</div>
+                <div class="red plansTypeBTN" id="renderOverduesPlansBtn">Просроченные</div>
+            </div>
             <div class="content-block__plansList" id="plansListID">
                 <!-- <div class="plansList__plan important-plan " data-plansid="ID1">
                     <p class="plans-name">Название</p>
@@ -173,7 +146,12 @@
     <script src="./modules/ControlPlans.js"></script>
     <!-- Блок статистики по планам -->
     <script src="./modules/stats.js"></script>
-
+    <!-- overdue plans box -->
+    <script src="./modules/boxOfOverduePlans.js"></script>
+    <!-- render overdue plans -->
+    <script src="./modules/renderOverduePlans.js"></script>
+    <!-- maps yandex -->
+    <script type="text/javascript" src="./modules/maps.js"></script>
 </body>
 
 </html>

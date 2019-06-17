@@ -53,7 +53,6 @@
         plansCounter--;
         let currentStore = localStorage.plansStore;
         currentStore = JSON.parse(currentStore);
-        console.log("curent = ", currentStore);
 
         let plan = currentStore[id];
         let planStaus = plan.plansStatus;
@@ -127,5 +126,8 @@
     storage.getAllPlansCount = function(){
         return localStorage.plansIndex;
     }
+
+//check overdues
+
 
 })();

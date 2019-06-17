@@ -1,5 +1,5 @@
 *{
-    overflow: hidden;
+    /* overflow: hidden; */
     box-sizing: border-box;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -34,12 +34,24 @@ section{
 }
 .red{
     background: rgba(249, 86, 82, 0.8);
+    transition: .3s
+}
+.red:hover{
+    background: rgba(211, 42, 39, 0.9);
 }
 .green{
-    background: rgba(0, 201, 0, 0.8)
+    background: rgba(0, 201, 0, 0.8);
+    transition: .3s;
+}
+.green:hover{
+    background: rgba(25, 177, 25, 0.9)
 }
 .blue{
     background:rgba(154, 190, 248, 0.8);
+}
+.blue:hover{
+    background:rgba(72, 139, 248, 0.8);
+    transition: .3s;
 }
 .dflex{
     display: flex;
@@ -146,6 +158,7 @@ aside{
     font-weight: 600;
     font-size: 20px;
     color: #333;
+    margin: 5px;
 }
 .indicator{
     width: 18px;
@@ -159,6 +172,24 @@ aside{
     background: rgba(208, 253, 255, .5);
     display: flex;
     flex-direction: column;
+}
+
+.conntentBlock__plansTypeBTNS{
+    display: flex;
+    justify-content: center;
+}
+.plansTypeBTN{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 18px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 5px;
+    margin: 2px 5px;
+    letter-spacing: 0.08em;
 }
 
 
@@ -321,6 +352,17 @@ aside{
     border-radius: 5px;
     transition: 1s all linear; 
 }
+.plansList__planOverdue{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    width: 96%;
+    margin: 5px auto;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 1s all linear; 
+}
 .plansList__plan p {
     margin: 3px;
     letter-spacing: 0.06em;
@@ -331,15 +373,30 @@ aside{
     font-weight: 600;
     font-size: 18px;
 }
+.plans-nameOVD{
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 3px;
+}
 .plans-description{
     color: #fff;
     font-size: 16px;
+}
+.plans-descriptionOVD{
+    color: #fff;
+    font-size: 16px;
+    margin: 3px;
 }
 .plans__comandButtons{
     display: grid;
     grid-template-rows: 40px;
     grid-template-columns: 200px auto 110px 110px;
     align-items: center;
+}
+.plans__comandButtonsOVD{
+    display: flex;
+    justify-content: flex-end;
 }
 .plansTimeLimit{
     color: white;
@@ -382,6 +439,16 @@ aside{
     margin: 0;
     align-self: flex-start;
 }
+/* maps block */
+#mapsBlock{
+    width: 95%;
+    height: 40%;
+    z-index: 32;
+    overflow: visible;
+    border-radius: 5px;
+
+}
+
 
 /* weather block */
 .weather{
