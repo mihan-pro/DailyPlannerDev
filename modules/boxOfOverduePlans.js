@@ -35,7 +35,7 @@
     }
 
     //удалить один план
-    let delOneOverduePlan = (obj,id)=>{
+    storage.delOneOverduePlan = (obj,id)=>{
         delete obj[id];
     }
 
@@ -56,7 +56,7 @@
         let timeLim = new Date("3000-01-15");
 
         storage.addNewPlan(name,description,status,timeLim);
-        delOneOverduePlan(currentStore,id);
+        storage.delOneOverduePlan(currentStore,id);
         localStorage.overduePlansStore = JSON.stringify(currentStore);
         storage.renderOverduePlans();
     }

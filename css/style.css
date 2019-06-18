@@ -190,6 +190,7 @@ aside{
     border-radius: 5px;
     margin: 2px 5px;
     letter-spacing: 0.08em;
+    cursor: pointer;
 }
 
 
@@ -508,4 +509,61 @@ aside{
 }
 .cloudy{
     background-image: url(../img/cloudy.png);
+}
+
+/* экран загрузки */
+.loadingScreen{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    background: rgba(56, 0, 60, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loadingScreen__logo{
+    margin-bottom: 10px;
+}
+.loadingScreen__sun{
+    animation: rotateSun 5s linear infinite;
+    margin-bottom: 10px;
+}
+.loadingScreen__text{
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 26px;
+    color: #fff ; 
+    animation: opacityText 3s linear infinite;
+}
+.loadingScreen__textDescription{
+    font-size: 18px;
+    color: #fff ; 
+}
+
+@keyframes rotateSun{
+    0%{
+        transform: scale(1)
+    }
+    50%{
+        transform: scale(1.5);
+        transform: rotate(-180deg);
+    }
+    100%{
+        transform: scale(1);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes opacityText{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
