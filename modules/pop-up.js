@@ -146,6 +146,32 @@ var requierTimeLimit = function(){
         return false;
     }
 }
+let dayInput = $('#timeLimitDate');
+let monthInput = $('#timeLimitMonth');
+//проверка валидности числа
+let requierDay = function(){    
+    if(+dayInput.val() < 1){
+        dayInput.val('1');
+    }
+    else if(+dayInput.val()>31){
+        dayInput.val('31');
+    }
+}
+//проверка валидности месяца
+let requierMonth = function(){    
+    if(+monthInput.val() < 1){
+        monthInput.val('1');
+    }
+    else if(+monthInput.val()>12){
+        monthInput.val('12');
+    }
+}
+dayInput.blur(()=>{
+    requierDay();
+})
+monthInput.blur(()=>{
+    requierMonth()
+})
 
 
 storage.setNewPlanBtn.addEventListener('click',()=>{

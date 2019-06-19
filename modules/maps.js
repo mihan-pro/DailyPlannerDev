@@ -2,7 +2,8 @@
     let userChoice = document.getElementById('cityChoice');
 
 
-    ymaps.ready(init);
+    try{
+    ymaps.ready(init)
     function init() {
         var myMap = new ymaps.Map("mapsBlock", {
             center: [56.314509846689724,43.98961707026494],
@@ -27,6 +28,13 @@
                 myMap.panTo([[51.508916513575834,-0.12684962547236317]], {duration: 2000});
             }
         });
+    }
+    }
+    catch{
+        let block = $('#mapsBlock');
+        block.html('<img src="./img/disconnected.png">'+
+        '<p class="maps-txt">Для отображения карт и погоды <br>'+
+        'Пожалуйста подключитесь к сети </p>' );
     }
 
     
