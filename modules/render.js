@@ -1,6 +1,5 @@
 (function(){
     
-    // console.log("renderList ==",renderList);
 
     storage.renderPlans = function()
     {

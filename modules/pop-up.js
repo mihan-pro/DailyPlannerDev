@@ -81,6 +81,7 @@ storage.checkNamePopUp = function(){
     }    
     return true;
 }
+//проверка поля описания
 storage.checkDiscriptPopUp = function(){
     let descript = $('#plansDescriptInputID');
     let val = $(descript).val();
@@ -92,25 +93,9 @@ storage.checkDiscriptPopUp = function(){
     return true;
 }
 
+//проврека правильности заполнения временного лимита
 storage.checkTimeLimit = function(){
     let currentDate = new Date;
- {   // let userValDate = $('#timeLimitDate').val();
-    // let userValMonth = $('#timeLimitMonth').val();
-    // let userValYear = $('#timeLimitYear').val();
-    // if( userValDate  == "" ||
-    //     userValMonth == "" || 
-    //     userValYear  == "" ){
-    //     userVal = "3000-01-15";
-    //     var userDate = new Date(userVal);
-    //     return true;
-    // }
-    // try{
-    //     var userDate = new Date(userValYear,userValMonth,userValDate);
-    //     console.log("evrything were good = ",userDate);
-    // } catch{
-    //     console.log("somthing was wrong into ", userDate);
-    // }
-}
     let userDate = storage.takeTimeLimit();    
     if( currentDate > userDate){
         return false;
@@ -175,6 +160,7 @@ monthInput.blur(()=>{
 
 
 storage.setNewPlanBtn.addEventListener('click',()=>{
+    storage.renderPlans();
     storage.showPopUp();
     $('#plansNameInputID').focus();
 });

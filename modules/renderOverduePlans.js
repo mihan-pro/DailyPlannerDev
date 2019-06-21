@@ -1,5 +1,9 @@
 (function(){
+    let plansList = document.getElementById('plansListID');
+    let renderPlansButton = document.getElementById('renderPlansBtn');
+    let showOVDBtn = document.getElementById('renderOverduesPlansBtn');
 
+    //отображение просроченных планов
     storage.renderOverduePlans = function()
     {
         let renderList = localStorage.overduePlansStore;
@@ -18,7 +22,7 @@
             let obj = renderList[item];
             
             
-            let htmlString = ' <div class = "plansList__planOverdue ' + "red" +
+            let htmlString = ' <div class = "plansList__planOverdue' + " red" +
             ' " data-plansid = "' + obj.plansId +
             '"> <p class = "plans-nameOVD " >' + obj.plansName +
             '</p><p class="plans-descriptionOVD">' + obj.plansDescription + '</p>'+
@@ -36,49 +40,65 @@
         
     };
 
-    let renderPlansButton = document.getElementById('renderPlansBtn');
+    //ДЕЙСТВИЕ КНОПКИ 'АКТИВНЫЕ' ПЛАНЫ
+
     renderPlansButton.addEventListener('click',()=>{
         storage.renderPlans();
     });
+    //действие кнопки показать просроченные
 
-    let renderOverduePlansButton = document.getElementById('renderOverduesPlansBtn');
-    renderOverduePlansButton.addEventListener('click',()=>{
+    showOVDBtn.addEventListener('click',()=>{
         storage.checkOverdues();
         storage.renderOverduePlans();
     });
 
-    let returnPlanButton = document.getElementById('plansListID');
-        returnPlanButton.addEventListener('click', ()=>{
+    //действие возвращения плана
+
+        plansList.addEventListener ('click', ()=>{
         let target = event.target;
-        let plan = target.parentElement;    
+        let plan = target;   
         plan = plan.parentElement;
+        plan = plan.parentElement;
+        
         if(plan.classList.contains('plansList__planOverdue')&&
-        target.id == 'returnPlanBtn'){        
-            let id = plan.getAttribute('data-plansid');
+        target.id == 'returnPlanBtn'){
+            console.log("works herere");
+            let id = plan.getAttribute('data-plansid');     
             storage.returnPlan(id);
+        }
+        else{
+            return false;
         }
     })
 
-    let deleteOVDPlanBtn = document.getElementById('deleteOVDPlanBtn');
-        returnPlanButton.addEventListener('click', ()=>{
-        let renderList = localStorage.overduePlansStore;
-        try{
-            renderList = JSON.parse(renderList);
-            
-        }catch{
-            console.log(Error.caller);
-        } 
+    // кнопка удаления просроченного плана
+
+    plansList.addEventListener('click', () => {
         let target = event.target;
-        let plan = target.parentElement;    
+        let plan = target;
         plan = plan.parentElement;
-        if(plan.classList.contains('plansList__planOverdue')&&
-        target.id == 'deleteOVDPlanBtn'){        
-            let id = plan.getAttribute('data-plansid');            
-            storage.delOneOverduePlan(renderList,id);
+        plan = plan.parentElement;
+        if (plan.classList.contains('plansList__planOverdue')
+            &&
+            (target.id == 'deleteOVDPlanBtn')) {
+            let renderList = localStorage.overduePlansStore;
+            console.log("TCL: let renderList", renderList)
             
-        }
+            try {
+                renderList = JSON.parse(renderList);
+
+            } catch{
+                console.log(Error.caller);
+            }
+            let id = plan.getAttribute('data-plansid');
+            storage.delOneOverduePlan(renderList, id);
+        
         localStorage.overduePlansStore = JSON.stringify(renderList);
         storage.renderOverduePlans();
+        }
     })    
 
 })();
+
+
+    

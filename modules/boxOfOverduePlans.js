@@ -15,7 +15,6 @@
         catch{
             currentStore = {};
         }
-        console.log("curstore================",currentStore);
         let plansStore = localStorage.plansStore;
         plansStore = JSON.parse(plansStore);
         let plan = plansStore[id];

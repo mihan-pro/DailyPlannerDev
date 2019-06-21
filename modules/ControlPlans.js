@@ -19,7 +19,7 @@ plansList.addEventListener('click',()=>{
     target.id == 'deletePlanBtn'){        
         let id = plan.getAttribute('data-plansid');
         storage.deleteOnePlan(id);
-        storage.renderPlans(); 
+        setTimeout(storage.renderPlans(),0); 
         storage.renderStats();
     }
 })
