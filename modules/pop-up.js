@@ -95,7 +95,7 @@ storage.checkDiscriptPopUp = function(){
 
 //проврека правильности заполнения временного лимита
 storage.checkTimeLimit = function(){
-    let currentDate = new Date;
+    let currentDate = new Date();
     let userDate = storage.takeTimeLimit();    
     if( currentDate > userDate){
         return false;

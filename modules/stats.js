@@ -18,6 +18,7 @@ let updateUniportantCount = function(){
     let value = valueAll-valueImp;
     $(unimportantCount).html(value);
 }
+//подсчёт процента
 let updatePercent = function(){
     storage.allPlans = storage.getCountPlans() + storage.getCountFinishedPlans();    
     let finishedPlans = storage.getCountFinishedPlans();
@@ -33,7 +34,13 @@ let updatePercent = function(){
     percent = Math.round(percent);
     $(donePercent).html(percent + " %");
 }
+//all plans show
+let showAllPlansCount = function(){
+    let count = $('#allPlansID');
+    count.html(storage.getCountPlans());
+}
 storage.renderStats = function(){
+    showAllPlansCount();
     updateAllPlansCount();
     updateImportantCount();
     updateUniportantCount();

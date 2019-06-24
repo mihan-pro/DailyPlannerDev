@@ -15,7 +15,7 @@
 
 
 
-
+    //добавить план
     storage.addNewPlan = function(name,description,status,timeLim){
         plansCounter++;
         let plansIndex = localStorage.plansIndex;
@@ -49,6 +49,7 @@
         storage.renderStats();
     };
 
+    //удалить один план
     storage.deleteOnePlan = function(id){
         plansCounter--;
         let currentStore = localStorage.plansStore;
@@ -71,12 +72,14 @@
         storage.renderStats();
     };
 
+    //закончить один план
     storage.finishOnePlan = function(id){ 
         finishedPlans++;
         storage.deleteOnePlan(id);
         storage.renderStats();
     }
 
+    //удалить все планы
     storage.deleteAllPlans = function(){
         plansCounter = 0;
         localStorage.plansIndex = 0 + "";
@@ -85,6 +88,7 @@
         
     };
 
+    //получить количество
     storage.getCountPlans = function(){
         let count = 0;
         let currentStore = localStorage.plansStore;
@@ -100,6 +104,7 @@
         return count;
     };
 
+    //получить количество важных
     storage.getCountImpPlans = function(){
         let count = 0;
         let currentStore = localStorage.plansStore;

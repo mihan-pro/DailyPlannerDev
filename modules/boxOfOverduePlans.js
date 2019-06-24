@@ -74,9 +74,11 @@
             let date = obj.timeLimit;
             date = new Date(date);
             if(date<curDate){
-                storage.addNewOverduePlan(obj);
+                storage.addNewOverduePlan(obj.plansId);
+                storage.deleteOnePlan(obj.plansId);
             }
         }
+        localStorage.plansStore = JSON.stringify(currentStore);
     }
     //получение плана из хранилища просроченных
     storage.getOverdueItem = function(id){

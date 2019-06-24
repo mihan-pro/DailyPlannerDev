@@ -155,8 +155,9 @@ aside{
     width: 90%;
 }
 #today-aims--headline{
+    white-space: nowrap;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     color: #333;
     margin: 5px;
 }
