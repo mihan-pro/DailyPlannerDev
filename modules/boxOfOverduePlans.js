@@ -73,7 +73,9 @@
             let obj = currentStore[item];
             let date = obj.timeLimit;
             date = new Date(date);
-            if(date<curDate){
+            date.setMonth(date.getMonth()-1);
+            date.setDate(date.getDate()+1); //костыль 
+            if(date<curDate){                
                 storage.addNewOverduePlan(obj.plansId);
                 storage.deleteOnePlan(obj.plansId);
             }

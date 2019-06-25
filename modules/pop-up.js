@@ -93,10 +93,12 @@ storage.checkDiscriptPopUp = function(){
     return true;
 }
 
-//проврека правильности заполнения временного лимита
+//проверка правильности заполнения временного лимита
 storage.checkTimeLimit = function(){
     let currentDate = new Date();
-    let userDate = storage.takeTimeLimit();    
+    let userDate = storage.takeTimeLimit();
+    userDate.setMonth(userDate.getMonth()-1);
+    userDate.setDate(userDate.getDate()+1); //костыль     
     if( currentDate > userDate){
         return false;
     }
